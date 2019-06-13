@@ -29,12 +29,88 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.pBPNG = new System.Windows.Forms.PictureBox();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.cmsTrayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            ((System.ComponentModel.ISupportInitialize)(this.pBPNG)).BeginInit();
+            this.cmsTrayMenu.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // pBPNG
+            // 
+            this.pBPNG.BackColor = System.Drawing.Color.Transparent;
+            this.pBPNG.Image = global::InMyMonitor.Properties.Resources.Blank;
+            this.pBPNG.Location = new System.Drawing.Point(0, 0);
+            this.pBPNG.Name = "pBPNG";
+            this.pBPNG.Size = new System.Drawing.Size(1920, 1080);
+            this.pBPNG.TabIndex = 0;
+            this.pBPNG.TabStop = false;
+            this.pBPNG.WaitOnLoad = true;
+            this.pBPNG.Paint += new System.Windows.Forms.PaintEventHandler(this.pBPNG_Paint);
+            this.pBPNG.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pBPNG_MouseDown);
+            this.pBPNG.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pBPNG_MouseMove);
+            this.pBPNG.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pBPNG_MouseUp);
+            // 
+            // notifyIcon
+            // 
+            this.notifyIcon.BalloonTipText = "WA!";
+            this.notifyIcon.BalloonTipTitle = "Sans!";
+            this.notifyIcon.ContextMenuStrip = this.cmsTrayMenu;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "In My Monitor";
+            this.notifyIcon.Visible = true;
+            // 
+            // cmsTrayMenu
+            // 
+            this.cmsTrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.설정ToolStripMenuItem,
+            this.종료ToolStripMenuItem});
+            this.cmsTrayMenu.Name = "cmsTrayMenu";
+            this.cmsTrayMenu.Size = new System.Drawing.Size(118, 48);
+            // 
+            // 설정ToolStripMenuItem
+            // 
+            this.설정ToolStripMenuItem.Name = "설정ToolStripMenuItem";
+            this.설정ToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.설정ToolStripMenuItem.Text = "Settings";
+            this.설정ToolStripMenuItem.Click += new System.EventHandler(this.설정ToolStripMenuItem_Click);
+            // 
+            // 종료ToolStripMenuItem
+            // 
+            this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.종료ToolStripMenuItem.Text = "Exit";
+            this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.BackColor = System.Drawing.SystemColors.InfoText;
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.pBPNG);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Form1";
+            this.Text = "InMyMonitor";
+            this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.pBPNG)).EndInit();
+            this.cmsTrayMenu.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox pBPNG;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip cmsTrayMenu;
+        private System.Windows.Forms.ToolStripMenuItem 설정ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 종료ToolStripMenuItem;
     }
 }
 
