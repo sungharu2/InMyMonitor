@@ -18,11 +18,14 @@ namespace InMyMonitor
         private Point movePoint = Point.Empty;
         bool isClick = false;
 
+        public PictureBox pbPNG;
+
         Size imageSize;
 
         public Form1()
         {
             InitializeComponent();
+            InitPicture();
             this.FormBorderStyle = FormBorderStyle.None;
             // 기본 Form을 투명하게 하기 위해 배경색 조정
             this.BackColor = Color.Green;
@@ -31,11 +34,28 @@ namespace InMyMonitor
             SetPicture(@"..\..\Image.png");
         }
 
+        private void InitPicture()
+        {
+            pbPNG = new PictureBox();
+            pbPNG.BackColor = Color.Transparent;
+            pbPNG.Size = new Size(System.Windows.Forms.SystemInformation.VirtualScreen.Width,
+                            System.Windows.Forms.SystemInformation.VirtualScreen.Height);
+            pbPNG.Location = new Point(0, 0);
+            pbPNG.Image = Image.FromFile(@"..\..\Image.png");
+
+            pbPNG.MouseDown += new MouseEventHandler(this.pbPNG_MouseDown);
+            pbPNG.MouseMove += new MouseEventHandler(this.pbPNG_MouseMove);
+            pbPNG.MouseUp += new MouseEventHandler(this.pbPNG_MouseUp);
+            pbPNG.Paint += new PaintEventHandler(this.pbPNG_Paint);
+
+            pbPNG.Show();
+        }
+
         public int SetPicture(string imagePath)
         {
             if (File.Exists(imagePath))
             {
-                this.pBPNG.Image = Image.FromFile(imagePath);
+                this.pbPNG.Image = Image.FromFile(imagePath);
                 return 0;
             }
             else
@@ -43,14 +63,10 @@ namespace InMyMonitor
                 MessageBox.Show(imagePath + "\n이미지 파일이 존재하지 않습니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return -1;
             }
-            /*
-            pBPNG.BackColor = Color.Transparent;
-            imageSize = new Size(pBPNG.Width, pBPNG.Height);
-            */
         }
 
         // 이미지 드래그 시 이동 시킬 함수
-        private void pBPNG_MouseDown(object sender, MouseEventArgs e)
+        private void pbPNG_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -59,28 +75,28 @@ namespace InMyMonitor
             }
         }
 
-        private void pBPNG_MouseMove(object sender, MouseEventArgs e)
+        private void pbPNG_MouseMove(object sender, MouseEventArgs e)
         {
             if (isClick)
             {
                 this.movePoint = new Point(e.Location.X - startPoint.X, e.Location.Y - startPoint.Y);
-                this.pBPNG.Invalidate();
+                this.pbPNG.Invalidate();
             }
         }
 
-        private void pBPNG_MouseUp(object sender, MouseEventArgs e)
+        private void pbPNG_MouseUp(object sender, MouseEventArgs e)
         {
             if (isClick) isClick = false;
         }
 
         // 이미지가 이동하여 Invalidate 메시지를 받을 때마다 새로 이미지를 그려는 함수
-        private void pBPNG_Paint(object sender, PaintEventArgs e)
+        private void pbPNG_Paint(object sender, PaintEventArgs e)
         {
             //이전 이미지 clear
             e.Graphics.Clear(Color.Green);
-            if (this.pBPNG.Image != null)
+            if (this.pbPNG.Image != null)
             {
-                e.Graphics.DrawImage(this.pBPNG.Image, movePoint);
+                e.Graphics.DrawImage(this.pbPNG.Image, movePoint);
             }
         }
 

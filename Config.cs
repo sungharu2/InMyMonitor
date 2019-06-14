@@ -13,10 +13,15 @@ namespace InMyMonitor
     public partial class ConfigForm : Form
     {
         Form1 imageForm;
+        int imageX;
+        int imageY;
+
 
         public ConfigForm(Form1 _Form1)
         {
             InitializeComponent();
+            //imageX = Form1.pbPNG.
+            //imageY =
             imageForm = _Form1;
             this.Show();
         }
@@ -41,6 +46,16 @@ namespace InMyMonitor
                     this.lbIsSuccess.Text = "이미지 등록 성공";
                 }
             }
+        }
+
+        private void btn_Image_X_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Image_Y_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
