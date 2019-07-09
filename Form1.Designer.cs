@@ -34,7 +34,11 @@
             this.cmsTrayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsImageMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.DuplicateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsTrayMenu.SuspendLayout();
+            this.cmsImageMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIcon
@@ -68,6 +72,28 @@
             this.종료ToolStripMenuItem.Text = "Exit";
             this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
             // 
+            // cmsImageMenu
+            // 
+            this.cmsImageMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DuplicateToolStripMenuItem,
+            this.DeleteToolStripMenuItem1});
+            this.cmsImageMenu.Name = "cmsImageMenu";
+            this.cmsImageMenu.Size = new System.Drawing.Size(126, 48);
+            // 
+            // DuplicateToolStripMenuItem
+            // 
+            this.DuplicateToolStripMenuItem.Name = "DuplicateToolStripMenuItem";
+            this.DuplicateToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.DuplicateToolStripMenuItem.Text = "Duplicate";
+            this.DuplicateToolStripMenuItem.Click += new System.EventHandler(this.DuplicateToolStripMenuItem_Click);
+            // 
+            // DeleteToolStripMenuItem1
+            // 
+            this.DeleteToolStripMenuItem1.Name = "DeleteToolStripMenuItem1";
+            this.DeleteToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            this.DeleteToolStripMenuItem1.Text = "Delete";
+            this.DeleteToolStripMenuItem1.Click += new System.EventHandler(this.DeleteToolStripMenuItem1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -84,6 +110,7 @@
             this.TransparencyKey = System.Drawing.Color.Green;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.cmsTrayMenu.ResumeLayout(false);
+            this.cmsImageMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -93,6 +120,9 @@
         private System.Windows.Forms.ContextMenuStrip cmsTrayMenu;
         private System.Windows.Forms.ToolStripMenuItem 설정ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 종료ToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip cmsImageMenu;
+        private System.Windows.Forms.ToolStripMenuItem DuplicateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DeleteToolStripMenuItem1;
     }
 }
 

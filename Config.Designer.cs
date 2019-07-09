@@ -31,16 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigForm));
             this.btnSetImage = new System.Windows.Forms.Button();
             this.lbIsSuccess = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxWidth = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gbControl = new System.Windows.Forms.GroupBox();
+            this.lbScale = new System.Windows.Forms.Label();
+            this.btn_changeSize = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.btn_Image_X = new System.Windows.Forms.Button();
-            this.btn_Image_Y = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.tbxHeight = new System.Windows.Forms.TextBox();
+            this.gbImage = new System.Windows.Forms.GroupBox();
+            this.lbDescription = new System.Windows.Forms.Label();
+            this.gbControl.SuspendLayout();
+            this.gbImage.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSetImage
@@ -56,20 +57,21 @@
             // lbIsSuccess
             // 
             this.lbIsSuccess.AutoSize = true;
-            this.lbIsSuccess.Location = new System.Drawing.Point(6, 23);
+            this.lbIsSuccess.Location = new System.Drawing.Point(22, 23);
             this.lbIsSuccess.Name = "lbIsSuccess";
-            this.lbIsSuccess.Size = new System.Drawing.Size(149, 12);
+            this.lbIsSuccess.Size = new System.Drawing.Size(97, 12);
             this.lbIsSuccess.TabIndex = 1;
-            this.lbIsSuccess.Text = "새 이미지 등록을 해주세요";
+            this.lbIsSuccess.Text = "새 이미지 만들기";
             this.lbIsSuccess.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox1
+            // tbxWidth
             // 
-            this.textBox1.AcceptsReturn = true;
-            this.textBox1.Location = new System.Drawing.Point(49, 18);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(133, 21);
-            this.textBox1.TabIndex = 2;
+            this.tbxWidth.AcceptsReturn = true;
+            this.tbxWidth.Location = new System.Drawing.Point(49, 18);
+            this.tbxWidth.Name = "tbxWidth";
+            this.tbxWidth.Size = new System.Drawing.Size(133, 21);
+            this.tbxWidth.TabIndex = 2;
+            this.tbxWidth.Text = "0";
             // 
             // label1
             // 
@@ -81,31 +83,39 @@
             this.label1.Text = "가로 :";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // groupBox1
+            // gbControl
             // 
-            this.groupBox1.Controls.Add(this.btn_Image_Y);
-            this.groupBox1.Controls.Add(this.btn_Image_X);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 145);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(251, 133);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.gbControl.Controls.Add(this.lbScale);
+            this.gbControl.Controls.Add(this.btn_changeSize);
+            this.gbControl.Controls.Add(this.label2);
+            this.gbControl.Controls.Add(this.label1);
+            this.gbControl.Controls.Add(this.tbxHeight);
+            this.gbControl.Controls.Add(this.tbxWidth);
+            this.gbControl.Location = new System.Drawing.Point(12, 145);
+            this.gbControl.Name = "gbControl";
+            this.gbControl.Size = new System.Drawing.Size(251, 152);
+            this.gbControl.TabIndex = 3;
+            this.gbControl.TabStop = false;
+            this.gbControl.Text = "조절";
             // 
-            // groupBox2
+            // lbScale
             // 
-            this.groupBox2.Controls.Add(this.btnSetImage);
-            this.groupBox2.Controls.Add(this.lbIsSuccess);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(257, 127);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.lbScale.AutoSize = true;
+            this.lbScale.Location = new System.Drawing.Point(6, 126);
+            this.lbScale.Name = "lbScale";
+            this.lbScale.Size = new System.Drawing.Size(75, 12);
+            this.lbScale.TabIndex = 4;
+            this.lbScale.Text = "크기 비율 : 1";
+            // 
+            // btn_changeSize
+            // 
+            this.btn_changeSize.Location = new System.Drawing.Point(188, 16);
+            this.btn_changeSize.Name = "btn_changeSize";
+            this.btn_changeSize.Size = new System.Drawing.Size(57, 51);
+            this.btn_changeSize.TabIndex = 3;
+            this.btn_changeSize.Text = "변경";
+            this.btn_changeSize.UseVisualStyleBackColor = true;
+            this.btn_changeSize.Click += new System.EventHandler(this.btn_changeSize_Click);
             // 
             // label2
             // 
@@ -117,50 +127,52 @@
             this.label2.Text = "세로 :";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox2
+            // tbxHeight
             // 
-            this.textBox2.Location = new System.Drawing.Point(49, 46);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(133, 21);
-            this.textBox2.TabIndex = 2;
+            this.tbxHeight.Location = new System.Drawing.Point(49, 46);
+            this.tbxHeight.Name = "tbxHeight";
+            this.tbxHeight.Size = new System.Drawing.Size(133, 21);
+            this.tbxHeight.TabIndex = 2;
+            this.tbxHeight.Text = "0";
             // 
-            // btn_Image_X
+            // gbImage
             // 
-            this.btn_Image_X.Location = new System.Drawing.Point(188, 18);
-            this.btn_Image_X.Name = "btn_Image_X";
-            this.btn_Image_X.Size = new System.Drawing.Size(57, 23);
-            this.btn_Image_X.TabIndex = 3;
-            this.btn_Image_X.Text = "변경";
-            this.btn_Image_X.UseVisualStyleBackColor = true;
-            this.btn_Image_X.Click += new System.EventHandler(this.btn_Image_X_Click);
+            this.gbImage.Controls.Add(this.btnSetImage);
+            this.gbImage.Controls.Add(this.lbIsSuccess);
+            this.gbImage.Location = new System.Drawing.Point(12, 12);
+            this.gbImage.Name = "gbImage";
+            this.gbImage.Size = new System.Drawing.Size(257, 127);
+            this.gbImage.TabIndex = 3;
+            this.gbImage.TabStop = false;
+            this.gbImage.Text = "이미지";
             // 
-            // btn_Image_Y
+            // lbDescription
             // 
-            this.btn_Image_Y.Location = new System.Drawing.Point(188, 44);
-            this.btn_Image_Y.Name = "btn_Image_Y";
-            this.btn_Image_Y.Size = new System.Drawing.Size(57, 23);
-            this.btn_Image_Y.TabIndex = 3;
-            this.btn_Image_Y.Text = "변경";
-            this.btn_Image_Y.UseVisualStyleBackColor = true;
-            this.btn_Image_Y.Click += new System.EventHandler(this.btn_Image_Y_Click);
+            this.lbDescription.AutoSize = true;
+            this.lbDescription.Location = new System.Drawing.Point(12, 330);
+            this.lbDescription.Name = "lbDescription";
+            this.lbDescription.Size = new System.Drawing.Size(149, 24);
+            this.lbDescription.TabIndex = 4;
+            this.lbDescription.Text = "투명도가 적용된 이미지는 \r\n깨져 나올수도 있습니다.";
             // 
             // ConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(280, 363);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.lbDescription);
+            this.Controls.Add(this.gbImage);
+            this.Controls.Add(this.gbControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConfigForm";
             this.Text = "Config";
-            this.TransparencyKey = System.Drawing.Color.White;
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.gbControl.ResumeLayout(false);
+            this.gbControl.PerformLayout();
+            this.gbImage.ResumeLayout(false);
+            this.gbImage.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -168,13 +180,14 @@
 
         private System.Windows.Forms.Button btnSetImage;
         private System.Windows.Forms.Label lbIsSuccess;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxWidth;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btn_Image_Y;
-        private System.Windows.Forms.Button btn_Image_X;
+        private System.Windows.Forms.GroupBox gbControl;
+        private System.Windows.Forms.Button btn_changeSize;
+        private System.Windows.Forms.TextBox tbxHeight;
+        private System.Windows.Forms.GroupBox gbImage;
+        private System.Windows.Forms.Label lbDescription;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label lbScale;
     }
 }
